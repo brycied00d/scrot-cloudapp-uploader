@@ -10,6 +10,6 @@ if(!is_readable($file))
 require_once('CloudApp/Cloud/API.php');
 require_once('config.inc.php');
 $cloud = new Cloud_API(USER_EMAIL, USER_PASS);
-$url = $cloud->addFile($file);
-echo $url.PHP_EOL;
+$ret = $cloud->addFile($file);
+echo $ret->url.PHP_EOL;
 ?>
