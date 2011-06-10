@@ -2,9 +2,9 @@
 /* Simple Uploader for CloudApp */
 /* uploads $1 to CloudApp and returns the URL */
 
-if($_SERVER['ARGC'] < 2)
+if($_SERVER['argc'] < 2)
 	die('You must specify a file!'.PHP_EOL);
-$file = $_SERVER['ARGV'][1];
+$file = $_SERVER['argv'][1];
 if(!is_readable($file))
 	die('Unable to access file: '.$file.PHP_EOL);
 require_once('CloudApp/Cloud/API.php');
