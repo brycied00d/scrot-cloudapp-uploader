@@ -7,9 +7,14 @@ if($_SERVER['argc'] < 2)
 $file = $_SERVER['argv'][1];
 if(!is_readable($file))
 	die('Unable to access file: '.$file.PHP_EOL);
-require_once('CloudApp/Cloud/API.php');
+require_once('Cloud/API.php');
 require_once('config.inc.php');
 $cloud = new Cloud_API(USER_EMAIL, USER_PASS);
-$ret = $cloud->addFile($file);
+try {
+	$ret = $cloud->addFile($file);
+} catch(Cloud_Exception $e)
+{
+	die("Unrecoverable error: {$e->message}\n");
+}
 echo $ret->url.PHP_EOL;
 ?>
